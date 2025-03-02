@@ -129,6 +129,7 @@ body {
     position: relative;
     z-index: 2;
     color: white;
+    border: 1px solid white;
 }
 
 .booking-form h2 {
@@ -208,6 +209,7 @@ color:white;
 
 .gallery-container img {
     width: 30%;
+   
     border-radius: 10px;
     border: 3px solid #ffcc00;
 }
@@ -289,6 +291,36 @@ color:white;
 .contact-form button:hover {
     background: #e6b800;
 }
+.about {
+    text-align: center;
+    padding: 50px 20px;
+    background: black;
+}
+
+.about h2 {
+    font-size: 30px;
+    color: white;
+    margin-bottom: 20px;
+}
+.para{
+    max-width: 50%;
+    margin: 20px auto;
+    padding: 15px;
+    background: black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(255, 204, 0, 0.5);
+    
+}
+.aboutbtn{
+    padding: 10px;
+    background: #ffcc00;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #000;
+    font-weight: bold;
+}
+
 	/* Footer Section */
 .footer {
     background-color: #121212;
@@ -447,6 +479,32 @@ color:white;
     text-decoration: underline;
 }
 	</style>
+	<script>
+        function validateForm() {
+            let name = document.forms["myForm"]["name"].value;
+            let email = document.forms["myForm"]["email"].value;
+            let phone = document.forms["myForm"]["phone"].value;
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let phonePattern = /^\d{10}$/;
+            let errors = [];
+
+            if (name.trim() === "") {
+                errors.push("Name must not be empty.");
+            }
+            if (!emailPattern.test(email)) {
+                errors.push("Invalid email format.");
+            }
+            if (!phonePattern.test(phone)) {
+                errors.push("Phone number must be 10 digits.");
+            }
+
+            if (errors.length > 0) {
+                alert(errors.join("\n"));
+                return false;
+            }
+            return true;
+        }
+    </script>
 
 </head>
 <body>
@@ -459,8 +517,9 @@ color:white;
 				<li><a href="aboutus.jsp">About</a></li>
 				<li><a href="#">Services</a></li>
 				<li><a href="#">Gallery</a></li>
-				<li><a href="#">Blog</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="blog.jsp">Blog</a></li>
+				<li><a href="ContactUs.jsp">Contact</a></li>
+				<li><a href="#">View Profile</a></li>
 				<li><a href="#">Help</a></li>
 			</ul>
 		</nav>
@@ -479,7 +538,7 @@ color:white;
 		</div>
 		<div class="booking-form">
 			<h2>Book Your Taxi Online</h2>
-			<form action="${pageContext.request.contextPath}/CustomerReservationServlet" method="post">
+			<form action="${pageContext.request.contextPath}/CustomerReservationServlet" onsubmit="return validateForm()" method="post">
 				<input type="text" id="name" name="name" placeholder="Your name"required> 
 				<input type="email" id="email" name="email"placeholder="Email address" required>
 				<input type="text"id="phone" name="phone" placeholder="Phone number" required>
@@ -499,10 +558,13 @@ color:white;
 	<!-- About Section -->
 	<section class="about" id="about">
 		<h2>About Us</h2>
-		<p>We are a trusted taxi and car rental service providing safe and
+		<p class="para" id="para" >We are a trusted taxi and car rental service providing safe and
 			reliable rides to our customers. With a fleet of modern vehicles and
 			professional drivers, we ensure your journey is comfortable and
 			hassle-free.</p>
+			<a href="aboutus.jsp">
+				<button id="aboutbtn" class="aboutbtn" type="submit">Read More</button>
+			</a>
 	</section>
 
 	<!-- Services Section -->
@@ -533,9 +595,9 @@ color:white;
 	<section class="gallery" id="gallery">
 		<h2>Gallery</h2>
 		<div class="gallery-container">
-			<img src="images/car1.jpg" alt="Taxi Image 1"> <img
-				src="taxi2.jpg" alt="Taxi Image 2"> <img src="taxi3.jpg"
-				alt="Taxi Image 3">
+			<img src="${pageContext.request.contextPath}/images/gallery1.jpg" alt="Taxi Image 1"> 
+			<img  src="${pageContext.request.contextPath}/images/gallery2.jpg" alt="Taxi Image 2">
+		    <img src="${pageContext.request.contextPath}/images/car1.jpg" alt="Taxi Image 3">
 		</div>
 	</section>
 
@@ -645,7 +707,7 @@ color:white;
             </div>
 
             <div class="footer-bottom">
-                <p>©2024 <a href="#">DuruThemes</a>. All rights reserved.</p>
+                <p>©2024 <a href="#">ｍ𝑒𝕘𝐚 ⓒƗ𝐓𝔂 ⓒ𝐚๒</a>. All rights reserved.</p>
             </div>
         </div>
     </footer>
