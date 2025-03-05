@@ -256,12 +256,42 @@ body {
 .footer-bottom a:hover {
     text-decoration: underline;
 }
+.back-link {
+   position: absolute;
+    left: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #FFD700;
+    text-decoration: none;
+   
+}
+
+.back-link:hover {
+    color: #FFC107;
+    text-decoration: underline;
+}
+
+
     
     </style> <!-- Advanced CSS File -->
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+<a href="#" class="back-link" onclick="goBack()">⋘</a>
+
+<script>
+    function goBack() {
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            window.location.href = "home.jsp"; 
+        }
+    }
+</script>
+
+
+
     <div class="container">
         <a class="navbar-brand text-warning" href="#">ｍ𝑒𝕘𝐚 ⓒƗ𝐓𝔂 ⓒ𝐚๒ Blog - Sri Lanka</a>
     </div>
@@ -291,17 +321,17 @@ body {
                 <div class="footer-box">
                     <i class="fas fa-phone me-2"></i>
                     <h3>Call us</h3>
-                    <p>+971 52-333-4444</p>
+                    <p>+94 77 256 2536</p>
                 </div>
                 <div class="footer-box">
                     <i class="fas fa-envelope me-2"></i>
                     <h3>Write to us</h3>
-                    <p>info@renax.com</p>
+                    <p>megacity@cab.com</p>
                 </div>
                 <div class="footer-box">
                     <i class="fas fa-map-marker-alt me-2"></i>
                     <h3>Address</h3>
-                    <p>Dubai, Water Tower, Office 123</p>
+                    <p>Colombo 7, Mel Mavath, Office Mega</p>
                 </div>
             </div>
 

@@ -6,65 +6,94 @@
 <meta charset="UTF-8">
 <title>Registration page</title>
 <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            width: 350px;
-            text-align: center;
-        }
-        h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-        .links {
-            margin-top: 15px;
-        }
-        .links a {
-            text-decoration: none;
-            color: #007bff;
-            font-size: 14px;
-        }
-        .links a:hover {
-            text-decoration: underline;
-        }
-        .error {
-            color: red;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
+       /* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111; /* Black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container Styling */
+.container {
+    background-color: #222; /* Dark Gray for contrast */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(255, 223, 0, 0.5); /* Yellow glow effect */
+    width: 380px;
+    text-align: center;
+}
+
+/* Headings */
+h2 {
+    margin-bottom: 20px;
+    color: #ffcc00; /* Yellow */
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ffcc00; /* Yellow Border */
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+    outline: none;
+}
+
+input::placeholder {
+    color: #bbb;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ffcc00; /* Yellow */
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #e6b800; /* Darker Yellow */
+}
+
+/* Links */
+.links {
+    margin-top: 15px;
+}
+
+.links a {
+    text-decoration: none;
+    color: #ffcc00;
+    font-size: 14px;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+.links p{
+color:white;
+}
+
+/* Error Message */
+.error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
     </style>
 </head>
 <body>
@@ -89,7 +118,7 @@
         </form>
 
         <div class="links">
-            <p>Already have an account? <a href="login.jsp">Login here</a></p>
+            <p >Already have an account? <a href="login.jsp">Login here</a></p>
         </div>
     </div>
 

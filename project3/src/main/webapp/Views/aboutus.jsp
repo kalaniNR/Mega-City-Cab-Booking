@@ -17,6 +17,21 @@ body {
     margin: 0;
     padding: 0;
 }
+.back-link {
+   position: absolute;
+    left: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #FFD700;
+    text-decoration: none;
+   
+}
+
+.back-link:hover {
+    color: #FFC107;
+    text-decoration: underline;
+}
+
 
 /* Hero Section */
 .hero-section {
@@ -314,8 +329,20 @@ h3 {
 </head>
 <body>
 
+
 <!-- Hero Section -->
 <section class="hero-section">
+<a href="#" class="back-link" onclick="goBack()">⋘</a>
+
+<script>
+    function goBack() {
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            window.location.href = "home.jsp"; 
+        }
+    }
+</script>
     <div class="overlay">
         <h1>About Us</h1>
         
@@ -410,17 +437,17 @@ h3 {
                 <div class="footer-box">
                     <i class="fas fa-phone me-2"></i>
                     <h3>Call us</h3>
-                    <p>+971 52-333-4444</p>
+                    <p>+94 77 256  2548</p>
                 </div>
                 <div class="footer-box">
                     <i class="fas fa-envelope me-2"></i>
                     <h3>Write to us</h3>
-                    <p>info@renax.com</p>
+                    <p>megacity@cab.com</p>
                 </div>
                 <div class="footer-box">
                     <i class="fas fa-map-marker-alt me-2"></i>
                     <h3>Address</h3>
-                    <p>Dubai, Water Tower, Office 123</p>
+                    <p>Colombo 7, Mel Mavath, Office Mega</p>
                 </div>
             </div>
 

@@ -165,7 +165,7 @@
     <a href="manageDrivers.jsp"><i class="fas fa-car"></i> Manage Drivers</a>
     <a href="manageCars.jsp"><i class="fas fa-car-side"></i> Manage Cars</a>
     <a href="admin_bookings.jsp"><i class="fas fa-calendar-check"></i> Manage Bookings</a>
-    <a href="transactions.jsp"><i class="fas fa-file-invoice-dollar"></i> Transactions</a>
+    <a href="AdminContact.jsp"><i class="fas fa-file-invoice-dollar"></i> Message Box</a>
     <a href="reports.jsp"><i class="fas fa-chart-line"></i> Reports</a>
     <a href="${pageContext.request.contextPath}/AdminLogoutServlet" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
 </div>

@@ -165,37 +165,77 @@ body {
 
 /* Services Section */
 .services {
-    padding: 50px;
     text-align: center;
-    background: #111;
-    
+    padding: 50px 20px;
+    background-color: #121212; /* Dark background */
+    color: #FFD700; /* Yellow text */
 }
 
+/* Section Title */
+.services h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.5);
+}
+
+/* Service List */
 .service-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: auto;
 }
 
+/* Service Item */
 .service-item {
-    background: black;
+    background-color: #1E1E1E; /* Dark gray box */
     padding: 20px;
-    width: 22%;
-    margin: 10px;
+    width:300px;
     border-radius: 10px;
-    box-shadow: 2px 2px 10px rgba(255, 204, 0, 0.5);
+    box-shadow: 0px 4px 10px rgba(255, 215, 0, 0.5);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: center;
 }
 
+/* Service Title */
 .service-item h3 {
-    color: #ffcc00;
+    font-size: 1.5rem;
     margin-bottom: 10px;
+    color: #FFD700;
+    text-transform: uppercase;
 }
-.service-p{
-color:white;
+
+/* Service Description */
+.service-p {
+    font-size: 1rem;
+    color: #CCCCCC; /* Light gray */
+    line-height: 1.6;
 }
+
+/* Hover Effects */
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(255, 215, 0, 0.8);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .service-list {
+        grid-template-columns: 1fr; /* Stack items on small screens */
+    }
+}
+
 
 /* Gallery */
 .gallery {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.5);
     text-align: center;
     padding: 50px 20px;
     background: #000;
@@ -219,6 +259,10 @@ color:white;
     padding: 50px;
     text-align: center;
     background: #111;
+    color: #ede609;
+    
+    
+    
 }
 
 .blog article {
@@ -228,6 +272,7 @@ color:white;
     background: black;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(255, 204, 0, 0.5);
+    color:white;
 }
 
 /* Help Section */
@@ -251,74 +296,50 @@ color:white;
     background: #e6b800;
 }
 
-/* Contact Section */
-.contact-section {
-    padding: 50px;
-    text-align: center;
-    background: #111;
-}
-
-.contact-form {
-    max-width: 50%;
-    margin: 0 auto;
-    background: black;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px rgba(255, 204, 0, 0.5);
-}
-
-.contact-form input, .contact-form select, .contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ffcc00;
-    border-radius: 5px;
-    background: black;
-    color: white;
-}
-
-.contact-form button {
-    width: 100%;
-    padding: 10px;
-    background: #ffcc00;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: #000;
-    font-weight: bold;
-}
-
-.contact-form button:hover {
-    background: #e6b800;
-}
+/* About Section */
 .about {
     text-align: center;
-    padding: 50px 20px;
-    background: black;
+    padding: 60px 20px;
+    background-color: #121212; /* Dark background */
+    color: #FFD700; /* Yellow text */
 }
 
 .about h2 {
-    font-size: 30px;
-    color: white;
-    margin-bottom: 20px;
-}
-.para{
-    max-width: 50%;
-    margin: 20px auto;
-    padding: 15px;
-    background: black;
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px rgba(255, 204, 0, 0.5);
-    
-}
-.aboutbtn{
-    padding: 10px;
-    background: #ffcc00;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: #000;
+    font-size: 2.5rem;
     font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.5);
+}
+
+.para {
+    font-size: 1.2rem;
+    color: #CCCCCC; /* Light gray text */
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.6;
+    padding: 0 15px;
+}
+
+/* Read More Button */
+.about-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+    background-color: #FFD700;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 2px 2px 5px rgba(255, 215, 0, 0.5);
+}
+
+.about-btn:hover {
+    background-color: #FFC107;
+    text-decoration: none;
+    box-shadow: 0px 6px 12px rgba(255, 215, 0, 0.8);
 }
 
 	/* Footer Section */
@@ -515,12 +536,12 @@ color:white;
 			<ul>
 				<li><a href="home.jsp">Home</a></li>
 				<li><a href="aboutus.jsp">About</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Gallery</a></li>
+				<li><a href="#services">Services</a></li>
+				<li><a href="#gallery">Gallery</a></li>
 				<li><a href="blog.jsp">Blog</a></li>
 				<li><a href="ContactUs.jsp">Contact</a></li>
-				<li><a href="#">View Profile</a></li>
-				<li><a href="#">Help</a></li>
+				<li><a href="profile.jsp">View Profile</a></li>
+				<li><a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -531,10 +552,12 @@ color:white;
 		<div class="overlay"></div>
 		<div class="hero-content">
 			<h2>Need a Ride? Just Call</h2>
-			<h1>911 999 911</h1>
+			<h1>77 365 2596</h1>
 			<p>Enjoy city breaks or extended holidays in comfort. Book your
 				taxi now!</p>
+				<a href="ContactUs.jsp">
 			<button class="btn">Call for Taxi</button>
+			</a>
 		</div>
 		<div class="booking-form">
 			<h2>Book Your Taxi Online</h2>
@@ -556,41 +579,43 @@ color:white;
 	</section>
 
 	<!-- About Section -->
-	<section class="about" id="about">
-		<h2>About Us</h2>
-		<p class="para" id="para" >We are a trusted taxi and car rental service providing safe and
-			reliable rides to our customers. With a fleet of modern vehicles and
-			professional drivers, we ensure your journey is comfortable and
-			hassle-free.</p>
-			<a href="aboutus.jsp">
-				<button id="aboutbtn" class="aboutbtn" type="submit">Read More</button>
-			</a>
-	</section>
+<section class="about" id="about">
+    <h2>About Us</h2>
+    <p class="para">
+        We are a trusted taxi and car rental service providing safe and reliable rides to our customers. 
+        With a fleet of modern vehicles and professional drivers, we ensure your journey is comfortable 
+        and hassle-free.
+    </p>
+    <a href="aboutus.jsp" class="about-btn">Read More</a>
+</section>
+
 
 	<!-- Services Section -->
-	<section class="services" id="services">
-		<h2>Our Services</h2>
-		<div class="service-list">
-			<div class="service-item">
-				<h3>Airport Pickup</h3>
-				<p class="service-p">We provide fast and convenient airport taxi services 24/7.</p>
-			</div>
-			<div class="service-item">
-				<h3>City Tours</h3>
-				<p class="service-p">Explore the city with our comfortable and guided tours.</p>
-			</div>
-			<div class="service-item">
-				<h3>Corporate Rides</h3>
-				<p class="service-p">Professional car rental solutions for businesses and
-					executives.</p>
-			</div>
-			<div class="service-item">
-				<h3>Long Distance Travel</h3>
-				<p class="service-p">Travel between cities with affordable and comfortable rides.</p>
-			</div>
-		</div>
-	</section>
-
+<section class="services" id="services">
+    <h2>Our Services</h2>
+    <div class="service-list">
+        <div class="service-item">
+            <i class="fas fa-plane service-icon"></i>
+            <h3>Airport Pickup</h3>
+            <p class="service-p">We provide fast and convenient airport taxi services 24/7.</p>
+        </div>
+        <div class="service-item">
+            <i class="fas fa-city service-icon"></i>
+            <h3>City Tours</h3>
+            <p class="service-p">Explore the city with our comfortable and guided tours.</p>
+        </div>
+        <div class="service-item">
+            <i class="fas fa-briefcase service-icon"></i>
+            <h3>Corporate Rides</h3>
+            <p class="service-p">Professional car rental solutions for businesses and executives.</p>
+        </div>
+        <div class="service-item">
+            <i class="fas fa-road service-icon"></i>
+            <h3>Long Distance Travel</h3>
+            <p class="service-p">Travel between cities with affordable and comfortable rides.</p>
+        </div>
+    </div>
+</section>
 	<!-- Gallery Section -->
 	<section class="gallery" id="gallery">
 		<h2>Gallery</h2>
@@ -619,40 +644,12 @@ color:white;
 	<section class="help" id="help">
 		<h2>Help & Support</h2>
 		<p>Have questions? Reach out to our 24/7 customer support team.</p>
-		<button class="btn">Contact Support</button>
+		<a href="ContactUs.jsp">
+				<button class="btn">Contact Support</button>
+			</a>
 	</section>
 
-	<!-- Contact Section -->
-	<section class="contact-section" id="contact">
-		<h2>Get in touch with us and ask your questions!</h2>
-
-		<div class="contact-info">
-			<p>Email: support@kubertaxi.com</p>
-			<p>Phone: 911 999 911</p>
-		</div>
-
-		<form class="contact-form">
-			<input type="text" name="name" placeholder="Your Name" required>
-			<input type="email" name="email" placeholder="Your Email" required>
-			<input type="text" name="phone" placeholder="Your Phone" required>
-			<select name="department">
-				<option value="business">Business Department</option>
-				<option value="support">Support</option>
-				<option value="sales">Sales</option>
-			</select>
-			<textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-			<button type="submit">Submit</button>
-		</form>
-
-		<div class="social-icons">
-			<a href="#">&#xf099;</a>
-			<!-- Facebook -->
-			<a href="#">&#xf09a;</a>
-			<!-- Twitter -->
-			<a href="#">&#xf16d;</a>
-			<!-- Instagram -->
-		</div>
-	</section>
+	
 
 	 <footer class="footer">
         <div class="footer-container">
@@ -660,17 +657,17 @@ color:white;
                 <div class="footer-box">
                     <i class="fas fa-phone me-2"></i>
                     <h3>Call us</h3>
-                    <p>+971 52-333-4444</p>
+                    <p>+94 77 325 0125</p>
                 </div>
                 <div class="footer-box">
                     <i class="fas fa-envelope me-2"></i>
                     <h3>Write to us</h3>
-                    <p>info@renax.com</p>
+                    <p>megacity@cab.com</p>
                 </div>
                 <div class="footer-box">
                     <i class="fas fa-map-marker-alt me-2"></i>
                     <h3>Address</h3>
-                    <p>Dubai, Water Tower, Office 123</p>
+                    <p>Colombo 7, Mel Mavath, Office Mega</p>
                 </div>
             </div>
 
