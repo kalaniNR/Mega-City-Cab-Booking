@@ -185,7 +185,7 @@ button:hover {
 				<input type="checkbox" name="rememberMe" <%= savedUsername.isEmpty() ? "" : "checked" %>> Remember Me
 			</label>
 			
-			<button type="submit">Login</button>
+			<button id="submit" type="submit">Login</button>
 
 		</form>
 
