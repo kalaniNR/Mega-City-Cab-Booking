@@ -14,7 +14,12 @@
             margin: 0;
             padding: 0;
             display: flex;
+            
         }
+        .text{
+        color:white;
+        }
+        
         
 .sidebar {
     width: 200px;
@@ -84,9 +89,10 @@
 
 /* Content Area */
 .content {
-    margin-left: 270px;
-    padding: 20px;
+    margin-left: 240px;
+    padding: 40px;
     width: calc(100% - 270px);
+    background:#063047;
 }
 
         .dashboard-cards {
@@ -172,18 +178,18 @@
 
 
     <div class="content">
-        <h2>Welcome, <%= session.getAttribute("adminUser") %>!</h2>
+        <h2 class="text">Welcome, <%= session.getAttribute("adminUser") %>!</h2>
 
         <!-- Dashboard Cards -->
         <div class="dashboard-cards">
             <div class="card">
                 <h3>Income</h3>
-                <p>$9460.00</p>
+                <p>RS 209460.00</p>
                 <span style="color: red;">↓ 1.5%</span>
             </div>
             <div class="card">
                 <h3>Expenses</h3>
-                <p>$5660.00</p>
+                <p>RS 55660.00</p>
                 <span style="color: green;">↑ 2.5%</span>
             </div>
             <div class="card">
@@ -194,7 +200,7 @@
         </div>
 
         <!-- Car Status Table -->
-        <h3>Live Car Status</h3>
+        <h3 class="text">Live Car Status</h3>
         <table class="status-table">
             <tr>
                 <th>No.</th>
@@ -205,24 +211,24 @@
             </tr>
             <tr>
                 <td>01</td>
-                <td>6465</td>
-                <td>Alex Noman</td>
+                <td>ACD6465</td>
+                <td>Saman Kumara</td>
                 <td style="color: green;">Completed</td>
-                <td>$35.44</td>
+                <td>RS.2500</td>
             </tr>
             <tr>
                 <td>02</td>
-                <td>5665</td>
-                <td>Razib Rahman</td>
+                <td>BCF5665</td>
+                <td>Kamal Ranasingha</td>
                 <td style="color: blue;">Pending</td>
-                <td>$0.00</td>
+                <td>RS.0.00</td>
             </tr>
             <tr>
                 <td>03</td>
-                <td>1755</td>
-                <td>Luke Norton</td>
+                <td>DFG1755</td>
+                <td>Nimal Kumarasingha</td>
                 <td style="color: orange;">In Route</td>
-                <td>$23.50</td>
+                <td>RS.5000</td>
             </tr>
         </table>
 
@@ -270,7 +276,7 @@
                         },
                         ticks: {
                             callback: function(value) {
-                                return '$' + value.toLocaleString();
+                                return 'RS' + value.toLocaleString();
                             }
                         }
                     }

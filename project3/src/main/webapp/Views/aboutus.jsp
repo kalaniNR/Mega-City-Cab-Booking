@@ -35,12 +35,60 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background: url('../images/about-banner.jpg') no-repeat center center/cover;
+    background: url('../images/home.jpg') no-repeat center center/cover;
     height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+}
+/* Header */
+.sticky-header {
+    background: #000; /* Black header */
+    color: #ffcc00; /* Yellow text */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.sticky-header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+.sticky-header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.sticky-header nav ul li {
+    margin-left: 20px;
+}
+
+.sticky-header nav ul li a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.sticky-header nav ul li a:hover {
+    color: white;
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 .overlay {
@@ -348,6 +396,21 @@ h3 {
         
     </div>
 </section>
+<header class="sticky-header">
+		<div class="logo">ｍ𝑒𝕘𝐚 ⓒƗ𝐓𝔂 ⓒ𝐚๒</div>
+		<nav>
+			<ul>
+				<li><a href="home.jsp">Home</a></li>
+				<li><a href="aboutus.jsp">About</a></li>
+				<li><a href="#services">Services</a></li>
+				<li><a href="#gallery">Gallery</a></li>
+				<li><a href="blog.jsp">Blog</a></li>
+				<li><a href="ContactUs.jsp">Contact</a></li>
+				<li><a href="profile.jsp">View Profile</a></li>
+				<li><a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a></li>
+			</ul>
+		</nav>
+	</header>
 
 <!-- Introduction Section -->
 <section class="about-intro">

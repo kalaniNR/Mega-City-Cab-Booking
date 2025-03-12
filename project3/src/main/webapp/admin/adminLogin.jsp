@@ -70,10 +70,10 @@ p {
         <h2>Admin Login</h2>
         <form action="${pageContext.request.contextPath}/AdminLoginServlet" method="post">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="username" placeholder="username" required>
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
 
             
             <a href="adminDashboard.jsp">

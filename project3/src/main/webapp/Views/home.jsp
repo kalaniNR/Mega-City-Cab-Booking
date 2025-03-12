@@ -65,60 +65,127 @@ body {
     color: white;
 }
 
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 /* Hero Section */
 .hero {
-    background: url('../images/taxi-bg.jpg') no-repeat center center/cover;
+    position: relative;
+    width: 100%;
     height: 100vh;
+    background: url('../images/home.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 50px;
-    position: relative;
 }
 
-.overlay {
+/* Transparent Dark Overlay */
+.hero .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.6); /* Dark transparency */
 }
 
+/* Hero Content */
 .hero-content {
-    max-width: 50%;
     position: relative;
-    z-index: 2;
-}
-
-.hero-content h1 {
-    font-size: 50px;
-    color: #ffcc00;
+    max-width: 50%;
+    color: #fff;
+    z-index: 1;
 }
 
 .hero-content h2 {
-    font-size: 30px;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #ffcc00;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
 }
 
 .hero-content p {
+    font-size: 1.2rem;
     margin: 20px 0;
-    font-size: 18px;
 }
 
-.hero .btn {
-    padding: 10px 20px;
-    font-size: 18px;
+/* Buttons */
+.btn {
     background: #ffcc00;
-    border: none;
-    cursor: pointer;
     color: #000;
+    padding: 12px 20px;
+    border: none;
+    font-size: 1.1rem;
     font-weight: bold;
-    transition: background 0.3s ease;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
-.hero .btn:hover {
+.btn:hover {
     background: #e6b800;
 }
+
+/* Booking Form */
+.booking-form {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    width: 350px;
+    color: #fff;
+    z-index: 1;
+}
+
+.booking-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.booking-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.booking-form button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 90%;
+        margin-bottom: 30px;
+    }
+
+    .booking-form {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
 
 /* Booking Form */
 .booking-form {
@@ -545,8 +612,6 @@ body {
 			</ul>
 		</nav>
 	</header>
-
-
 
 	<section class="hero">
 		<div class="overlay"></div>

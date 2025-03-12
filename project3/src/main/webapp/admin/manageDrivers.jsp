@@ -193,10 +193,6 @@ td img {
     }
 </script>
 	<h2>Manage Drivers</h2>
-	
-	
-
-	<!-- Add Driver Form -->
 	<form action="${pageContext.request.contextPath}/DriverServlet"
 		method="post" enctype="multipart/form-data">
 		<input type="hidden" name="action" value="add"> <label>Name:</label>

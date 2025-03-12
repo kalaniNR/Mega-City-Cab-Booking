@@ -18,9 +18,58 @@ body {
     color: #FFD700;
     font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 80px;
     text-align: center;
 }
+/* Header */
+.sticky-header {
+    background: #000; /* Black header */
+    color: #ffcc00; /* Yellow text */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.sticky-header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+.sticky-header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.sticky-header nav ul li {
+    margin-left: 20px;
+}
+
+.sticky-header nav ul li a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.sticky-header nav ul li a:hover {
+    color: white;
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 .back-link {
    position: absolute;
     left: 20px;
@@ -326,8 +375,24 @@ h5 {
         }
     }
 </script>
+<header class="sticky-header">
+		<div class="logo">ｍ𝑒𝕘𝐚 ⓒƗ𝐓𝔂 ⓒ𝐚๒</div>
+		
+		<nav>
+			<ul>
+				<li><a href="home.jsp">Home</a></li>
+				<li><a href="aboutus.jsp">About</a></li>
+				<li><a href="#services">Services</a></li>
+				<li><a href="#gallery">Gallery</a></li>
+				<li><a href="blog.jsp">Blog</a></li>
+				<li><a href="ContactUs.jsp">Contact</a></li>
+				<li><a href="profile.jsp">View Profile</a></li>
+				<li><a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a></li>
+			</ul>
+		</nav>
+	</header>
+	
 
-<h2>Contact Us</h2>
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
@@ -337,7 +402,7 @@ h5 {
             <% if (request.getAttribute("error") != null) { %>
                 <div class="alert alert-danger"><%= request.getAttribute("error") %></div>
             <% } %>
-
+<h2>Contact Us</h2>
             <form name="contactForm" action="${pageContext.request.contextPath}/ContactUsServlet" method="post">
                 <input type="text" name="name" placeholder="Your Name" required><br>
                 <input type="email" name="email" placeholder="Your Email" required><br>

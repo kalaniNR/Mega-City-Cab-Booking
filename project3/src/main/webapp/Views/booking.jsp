@@ -9,7 +9,13 @@
     <title>Car Booking</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/Css/bookingstyle.css">
     <style>
-    /* General Page Styling */
+/* Reset and General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #0d0d0d;
@@ -27,12 +33,56 @@ header {
     padding: 20px;
     background-color: #222;
     width: 100%;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
+.sticky-header {
+    background: #000;
+    color: #ffcc00;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.sticky-header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+.sticky-header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.sticky-header nav ul li {
+    margin-left: 20px;
+}
+
+.sticky-header nav ul li a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.sticky-header nav ul li a:hover {
+    color: white;
+}
+
+/* Page Title */
 h1 {
-    margin: 0;
-    font-size: 2rem;
-    color: #f4c100; /* Yellow theme */
+    margin: 20px 0;
+    font-size: 2.5rem;
+    color: #f4c100;
 }
 
 /* Car Listing Container */
@@ -98,13 +148,6 @@ button:hover {
     background-color: #ffdb4d;
 }
 
-/* Icon Styling */
-.icon {
-    color: #f4c100;
-    font-size: 1.2rem;
-    margin-right: 5px;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     form {
@@ -112,18 +155,31 @@ button:hover {
     }
 
     h1 {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 }
-    
+ 
     </style>
 </head>
 <body>
-    <header>
-        <h1>Book Your Car</h1>
-    </header>
-
-    
+	<header class="sticky-header">
+		<div class="logo">ｍ𝑒𝕘𝐚 ⓒƗ𝐓𝔂 ⓒ𝐚๒ </div>
+		 
+		<nav>
+			<ul>
+				<li><a href="home.jsp">Home</a></li>
+				<li><a href="aboutus.jsp">About</a></li>
+				<li><a href="#services">Services</a></li>
+				<li><a href="#gallery">Gallery</a></li>
+				<li><a href="blog.jsp">Blog</a></li>
+				<li><a href="ContactUs.jsp">Contact</a></li>
+				<li><a href="profile.jsp">View Profile</a></li>
+				<li><a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a></li>
+			</ul>
+		</nav>
+	</header>
+  
+    <h1>Book Your Car</h1>
         <%
             CarDao carDao = new CarDao();
             List<Car> carList = carDao.getAllCars(); // Fetch car list dynamically

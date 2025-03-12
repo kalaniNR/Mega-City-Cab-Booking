@@ -168,8 +168,6 @@ img:hover {
     }
 </script>
 	<h2>Manage Cars</h2>
-
-	<!-- Add Car Form -->
 	<form action="${pageContext.request.contextPath}/CarManagementServlet"
 		method="post" enctype="multipart/form-data">
 		<input type="hidden" name="action" value="add"> <input
