@@ -11,27 +11,24 @@ import java.io.IOException;
 
 import com.datapackage.dao.AdminDao;
 
-
 @WebServlet("/AdminLoginServlet")
 public class AdminLoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-    
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
+    private static final long serialVersionUID = 1L;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
 
         AdminDao adminDao = new AdminDao();
-        boolean isValid = adminDao.validateAdmin(username, password);
+        String validationMessage = adminDao.validateAdmin(username, password);
 
-        if (isValid) {
+        if ("Login successful.".equals(validationMessage)) {
             HttpSession session = request.getSession();
             session.setAttribute("adminUser", username);
             response.sendRedirect("admin/adminDashboard.jsp");
         } else {
-            request.setAttribute("errorMessage", "Invalid credentials!");
+            request.setAttribute("errorMessage", validationMessage);
             request.getRequestDispatcher("admin/adminLogin.jsp").forward(request, response);
         }
     }
-	
-
 }

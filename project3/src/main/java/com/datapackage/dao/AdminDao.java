@@ -30,23 +30,32 @@ public class AdminDao {
         return adminList;
     }
 
-    // Validate Admin Credentials
-    public boolean validateAdmin(String username, String password) {
-        boolean isValid = false;
-        String sql = "SELECT * FROM admin WHERE username = ? AND password = ?";
-        
+    public String validateAdmin(String username, String password) {
+        if (username.matches("\\d+")) {
+            return "Username cannot contain only numbers.";
+        }
+
+        String sql = "SELECT * FROM admin WHERE username = ?";
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-             
+
             stmt.setString(1, username);
-            stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
-            isValid = rs.next();
-            
-        } catch (Exception e) {
+
+            if (rs.next()) {
+                String storedPassword = rs.getString("password");
+                if (storedPassword.equals(password)) {
+                    return "Login successful.";
+                } else {
+                    return "Incorrect password. Please try again.";
+                }
+            } else {
+                return "Username not found. Please enter the correct username.";
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
+            return "Database error. Please try again later.";
         }
-        return isValid;
     }
 
     // Add Admin

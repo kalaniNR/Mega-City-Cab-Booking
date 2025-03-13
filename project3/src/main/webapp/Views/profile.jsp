@@ -166,7 +166,23 @@ input[type="file"] {
     color: #FFC107;
     text-decoration: underline;
 }
+.success-message {
+            background: #28a745;
+            color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
 
+        .error-message {
+            background: #dc3545;
+            color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
     
     </style>
     
@@ -207,6 +223,40 @@ input[type="file"] {
         <button type="submit" class="btn">Update Profile</button>
     </form>
 </section>
+ <script>
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = "home.jsp";
+            }
+        }
+
+        function validateForm() {
+            const name = document.forms["profileForm"]["name"].value;
+            const address = document.forms["profileForm"]["address"].value;
+            const contact = document.forms["profileForm"]["contact"].value;
+            const newPassword = document.forms["profileForm"]["newPassword"].value;
+
+            if (name === "" || address === "" || contact === "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+
+            if (newPassword.length > 0 && newPassword.length < 6) {
+                alert("Password must be at least 6 characters long");
+                return false;
+            }
+
+            return true;
+        }
+
+        // Auto-hide messages after 3 seconds
+        setTimeout(() => {
+            document.getElementById("message-container").innerHTML = "";
+        }, 3000);
+    </script>
+
 
 
 </body>
