@@ -3,9 +3,16 @@
 <%
     // Fetch logged-in username from session
     String username = (String) session.getAttribute("username");
+
+    if (username == null) {
+        response.sendRedirect("login.jsp"); // Redirect if not logged in
+        return;
+    }
+
     String name = "", address = "", contact = "", password = "", profilePic = "default.jpg";
-    
-    // Database connection details
+    int unreadCount = 0; // Added this declaration to fix 'undefined' error
+    String errorMessage = "";
+
     String jdbcURL = "jdbc:mysql://localhost:3306/project3";
     String dbUser = "root";
     String dbPassword = "Kalani2003@#$";
@@ -28,13 +35,25 @@
             profilePic = rs.getString("profile_pic") != null ? rs.getString("profile_pic") : "default.jpg";
         }
 
+        // Fetch unread messages count
+        sql = "SELECT COUNT(*) AS unreadCount FROM messages WHERE recipient=? AND status='unread'";
+        stmt = conn.prepareStatement(sql);
+        stmt.setString(1, username);
+        rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            unreadCount = rs.getInt("unreadCount");
+        }
+
         rs.close();
         stmt.close();
         conn.close();
     } catch (Exception e) {
         e.printStackTrace();
+        errorMessage = "Error fetching data. Please try again later.";
     }
 %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +62,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Settings</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     
     <style>
     .profile-pic-container {
@@ -155,6 +177,7 @@ input[type="file"] {
 .back-link {
    position: absolute;
     left: 20px;
+    top: 20px;
     font-size: 1rem;
     font-weight: bold;
     color: #FFD700;
@@ -183,6 +206,33 @@ input[type="file"] {
             border-radius: 5px;
             text-align: center;
         }
+      .notification-container {
+    position: fixed;   /* Fix the icon in place */
+    top: 40px;         /* Adjust distance from the top */
+    right: 400px;       /* Adjust distance from the right */
+    z-index: 999;      /* Ensure it stays on top of other content */
+}
+
+.notification-link {
+    color: #FFD700;  /* Gold color for the icon */
+    font-size: 36px;  /* Larger size for better visibility */
+    text-decoration: none;
+    position: relative;
+}
+
+.notification-link .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #dc3545;  /* Red background for the badge */
+    color: white;
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+
+        
     
     </style>
     
@@ -190,9 +240,20 @@ input[type="file"] {
 <body>
 
 
+
 <section class="profile-section">
     <h2>My Profile</h2>
-    <a href="home.jsp" class="back-link" onclick="goBack()">⋘ </a>
+    <a href="dashboard.jsp" class="back-link" onclick="goBack()">⋘ </a>
+    
+     
+   <div class="notification-container">
+    <a href="messages.jsp" class="notification-link">
+        <span class="material-icons">chat</span>  <!-- Material Icons chat icon -->
+        <% if (unreadCount > 0) { %>
+            <span class="badge"><%= unreadCount %></span>
+        <% } %>
+    </a>
+</div>
 
 <script>
     function goBack() {
@@ -256,6 +317,7 @@ input[type="file"] {
             document.getElementById("message-container").innerHTML = "";
         }, 3000);
     </script>
+    
 
 
 

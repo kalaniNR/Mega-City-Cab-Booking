@@ -335,7 +335,7 @@ body {
 				<li><a href="#gallery">Gallery</a></li>
 				<li><a href="blog.jsp">Blog</a></li>
 				<li><a href="ContactUs.jsp">Contact</a></li>
-				<li><a href="profile.jsp">View Profile</a></li>
+				<li><a href="dashboard.jsp">View Profile</a></li>
 				<li><a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a></li>
 			</ul>
 		</nav>

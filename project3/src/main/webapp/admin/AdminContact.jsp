@@ -83,7 +83,7 @@ h2 {
     padding: 10px;
     font-size: 16px;
     color: #ffffff;
-    background: #333;
+   
     border: 2px solid #00bcd4;
     border-radius: 5px;
     outline: none;

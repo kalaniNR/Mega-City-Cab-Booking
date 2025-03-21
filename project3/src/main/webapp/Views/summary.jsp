@@ -208,7 +208,7 @@ button:hover {
         %>
     </table>
 <%
-    double totalAmount = car.getPrice(); // Get price from selected car
+    double totalAmount = car.getPrice(); 
     session.setAttribute("totalAmount", totalAmount);
 %>
 

@@ -11,9 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.regex.Pattern;
 
-/**
- * Servlet implementation class ContactUsServlet
- */
+
 @WebServlet("/ContactUsServlet")
 public class ContactUsServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -91,7 +89,7 @@ public class ContactUsServlet extends HttpServlet {
             }
         }
 
-        // Forward back to the contact page with success or error message
-        request.getRequestDispatcher("Views/ContactUs.jsp").forward(request, response);
+      
+        response.sendRedirect("Views/ContactUs.jsp");
     }
 }

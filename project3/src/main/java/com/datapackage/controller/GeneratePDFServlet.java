@@ -2,14 +2,15 @@ package com.datapackage.controller;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
+import jakarta.mail.*;
+import jakarta.mail.internet.*;
+import jakarta.mail.util.ByteArrayDataSource;
+import jakarta.activation.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.OutputStream;
+import jakarta.servlet.http.*;
+import java.io.*;
+import java.util.Properties;
 
 @WebServlet("/GeneratePDFServlet")
 public class GeneratePDFServlet extends HttpServlet {
@@ -19,9 +20,11 @@ public class GeneratePDFServlet extends HttpServlet {
         response.setContentType("application/pdf");
         response.setHeader("Content-Disposition", "attachment; filename=Booking_Invoice.pdf");
 
-        try (OutputStream out = response.getOutputStream()) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+        try {
             Document document = new Document();
-            PdfWriter.getInstance(document, out);
+            PdfWriter.getInstance(document, baos);
             document.open();
 
             HttpSession session = request.getSession();
@@ -34,13 +37,11 @@ public class GeneratePDFServlet extends HttpServlet {
             String toLocation = (String) session.getAttribute("toLocation");
             String datetime = (String) session.getAttribute("datetime");
 
-           
             String paymentMethod = (String) session.getAttribute("paymentMethod");
             String paymentDetails = (String) session.getAttribute("paymentDetails");
             double amountPaid = session.getAttribute("amount") instanceof Double ? (double) session.getAttribute("amount") : 0.0;
             String paymentStatus = (String) session.getAttribute("paymentStatus");
 
-            
             // Title (Bold & Large)
             Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 20);
             Paragraph title = new Paragraph("Booking Invoice\n\n", titleFont);
@@ -58,7 +59,6 @@ public class GeneratePDFServlet extends HttpServlet {
             document.add(new Paragraph("Date & Time: " + (datetime != null ? datetime : "N/A")));
             document.add(new Paragraph("\n"));
 
-           
             // Payment Details
             document.add(new Paragraph("Payment Details\n", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14)));
             document.add(new Paragraph("Payment Method: " + (paymentMethod != null ? paymentMethod : "N/A")));
@@ -74,8 +74,52 @@ public class GeneratePDFServlet extends HttpServlet {
             document.add(thankYou);
 
             document.close();
+
+            // Send PDF via email
+            sendEmailWithAttachment(email, baos.toByteArray());
+
+            // Write PDF to HTTP response
+            response.getOutputStream().write(baos.toByteArray());
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void sendEmailWithAttachment(String recipientEmail, byte[] pdfData) throws MessagingException, IOException {
+        String senderEmail = "kalanirajapaksha.net@gmail.com"; 
+        String senderPassword = "dyom hnwz ppum beww"; 
+
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+
+        Session session = Session.getInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(senderEmail, senderPassword);
+            }
+        });
+
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(senderEmail));
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
+        message.setSubject("Payment Confirmation and Invoice");
+
+        MimeBodyPart messageBodyPart = new MimeBodyPart();
+        messageBodyPart.setText("Thank you for your payment. Please find your invoice attached.");
+
+        MimeBodyPart attachmentPart = new MimeBodyPart();
+        DataSource dataSource = new ByteArrayDataSource(pdfData, "application/pdf");
+        attachmentPart.setDataHandler(new DataHandler(dataSource));
+        attachmentPart.setFileName("Booking_Invoice.pdf");
+
+        Multipart multipart = new MimeMultipart();
+        multipart.addBodyPart(messageBodyPart);
+        multipart.addBodyPart(attachmentPart);
+
+        message.setContent(multipart);
+
+        Transport.send(message);
     }
 }

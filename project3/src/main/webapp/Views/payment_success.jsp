@@ -103,6 +103,7 @@ button:hover {
 <body>
     <div class="container">
         <h2>Payment Successful!</h2>
+        <p>A confirmation email has been sent to your registered email.</p>
         <p><b>Payment Method:</b> <%= session.getAttribute("paymentMethod") %></p>
         <p><b>Details:</b> <%= session.getAttribute("paymentDetails") %></p>
         <p><b>Amount Paid:</b> RS. <%= session.getAttribute("amount") %></p>
