@@ -146,11 +146,35 @@ h2 {
 .container {
     animation: fadeIn 0.5s ease-in-out;
 }
+.back-link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 24px;
+    color: #00bcd4;
+    margin-bottom: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.back-link:hover {
+    color: #ff4081;
+    transform: scale(1.1);
+}
     
     </style>
 </head>
 <body>
     <div class="container mt-5">
+    <a href="adminDashboard.jsp" class="back-link" onclick="goBack()">⋘ </a>
+
+<script>
+    function goBack() {
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            window.location.href = "adminDashboard.jsp"; 
+        }
+    }
+</script>
         <h2>Contact Messages</h2>
         <table class="table table-dark table-bordered">
             <thead>

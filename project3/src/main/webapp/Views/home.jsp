@@ -350,7 +350,7 @@ body {
 }
 
 .help .btn {
-    padding: 10px 20px;
+    padding: 3px 10px;
     font-size: 18px;
     background: #ffcc00;
     border: none;
@@ -566,6 +566,49 @@ body {
 .footer-bottom a:hover {
     text-decoration: underline;
 }
+.help {
+        text-align: center;
+        padding: 50px 20px;
+        background: black;
+        color: #ffcc00;
+    }
+    .help-options {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+    .help-item {
+        background: #222;
+        padding: 20px;
+        border-radius: 10px;
+        width: 250px;
+        text-align: center;
+        box-shadow: 0px 4px 10px rgba(255, 215, 0, 0.5);
+    }
+    .help-item i {
+        font-size: 30px;
+        color: #ffcc00;
+        margin-bottom: 10px;
+    }
+    .help-item h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        background: #ffcc00;
+        border: none;
+        cursor: pointer;
+        color: #000;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+    .btn:hover {
+        background: #e6b800;
+    }
 	</style>
 	<script>
         function validateForm() {
@@ -620,8 +663,8 @@ body {
 			<h1>77 365 2596</h1>
 			<p>Enjoy city breaks or extended holidays in comfort. Book your
 				taxi now!</p>
-				<a href="ContactUs.jsp">
-			<button class="btn">Call for Taxi</button>
+				<a href="liveChat.jsp">
+			<button class="btn">Start Live Chat</button>
 			</a>
 		</div>
 		<div class="booking-form">
@@ -642,6 +685,30 @@ body {
 			</form>
 		</div>
 	</section>
+	
+	<section class="help" id="help">
+    <h2>Help & Support</h2>
+    <p>Need assistance? Our 24/7 support team is here to help you with any queries.</p>
+    <div class="help-options">
+        <div class="help-item">
+            <i class="fas fa-phone-alt"></i>
+            <h3>Call Us</h3>
+            <p>+94 77 325 0125</p>
+        </div>
+        <div class="help-item">
+            <i class="fas fa-envelope"></i>
+            <h3>Email Us</h3>
+            <p>support@megacitycab.com</p>
+        </div>
+        <div class="help-item">
+            <i class="fas fa-comment-alt"></i>
+            <h3>Live Chat</h3>
+            <p>Chat with us for instant support.</p>
+             <a href="liveChat.jsp" class="btn">Start Chat</a>
+            
+        </div>
+    </div>
+</section>
 
 	<!-- About Section -->
 <section class="about" id="about">
@@ -705,14 +772,7 @@ body {
 		</article>
 	</section>
 
-	<!-- Help Section -->
-	<section class="help" id="help">
-		<h2>Help & Support</h2>
-		<p>Have questions? Reach out to our 24/7 customer support team.</p>
-		<a href="ContactUs.jsp">
-				<button class="btn">Contact Support</button>
-			</a>
-	</section>
+
 
 	
 

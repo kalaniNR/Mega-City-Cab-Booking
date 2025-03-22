@@ -14,49 +14,71 @@
     font-family: "Poppins", sans-serif;
 }
 
-/* Body Styling */
 body {
     background-color: #111;
-    color: white;
+    color: #FFD700;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    text-align: center;
 }
 
-/* Payment Container */
 .container {
     background: #222;
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.5);
-    width: 400px;
-    animation: fadeIn 0.6s ease-in-out;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
 }
 
 h2 {
     color: #FFD700;
-    border-bottom: 2px solid #FFD700;
-    padding-bottom: 10px;
     margin-bottom: 20px;
+}
+
+.secure-badge {
+    background-color: #FFD700;
+    color: #111;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: inline-block;
 }
 
 form {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
 input, select {
     width: 100%;
     padding: 12px;
-    margin: 10px 0;
     border: 2px solid #FFD700;
     background: #333;
     color: #FFD700;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 16px;
     text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.payment-logo {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.payment-logo img {
+    height: 40px;
+    width: auto;
 }
 
 button {
@@ -68,29 +90,81 @@ button {
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
-    transition: 0.3s ease-in-out;
-    margin-top: 15px;
+    transition: background 0.3s ease-in-out;
 }
 
 button:hover {
     background: #FFA500;
-    transform: scale(1.05);
 }
+
+.loading {
+    display: none;
+    margin-top: 10px;
+}
+
+.loading img {
+    width: 40px;
+}
+
     </style>
+
+    <script>
+        function togglePaymentFields() {
+            const paymentMethod = document.getElementById("paymentMethod").value;
+            const cardDetails = document.getElementById("cardDetails");
+            const upiDetails = document.getElementById("upiDetails");
+
+            if (paymentMethod === "credit_card") {
+                cardDetails.classList.remove("hidden");
+                upiDetails.classList.add("hidden");
+            } else if (paymentMethod === "upi") {
+                upiDetails.classList.remove("hidden");
+                cardDetails.classList.add("hidden");
+            } else {
+                cardDetails.classList.add("hidden");
+                upiDetails.classList.add("hidden");
+            }
+        }
+
+        function showLoading() {
+            document.getElementById("loading").style.display = "block";
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h2>Secure Payment</h2>
-        <form action="${pageContext.request.contextPath}/PaymentServlet" method="post">
+        <div class="secure-badge">🔒 100% Secure Payment</div>
+
+        <div class="payment-logo">
+            <img src="${pageContext.request.contextPath}/images/visa.png" alt="Visa">
+            <img src="${pageContext.request.contextPath}/images/card.png" alt="Mastercard">
+            <img src="${pageContext.request.contextPath}/images/upi.png" alt="UPI">
+            <img src="${pageContext.request.contextPath}/images/net.png" alt="Net Banking">
+        </div>
+
+        <form action="${pageContext.request.contextPath}/PaymentServlet" method="post" onsubmit="showLoading()">
             <label>Select Payment Method:</label>
-            <select name="paymentMethod" required>
+            <select name="paymentMethod" id="paymentMethod" onchange="togglePaymentFields()" required>
+                <option value="" disabled selected>Select Payment Method</option>
                 <option value="credit_card">Credit/Debit Card</option>
                 <option value="upi">UPI</option>
                 <option value="net_banking">Net Banking</option>
             </select>
 
-            <label>Enter Card/UPI ID:</label>
-            <input type="text" name="paymentDetails" placeholder="Card Number / UPI ID" required>
+            <div id="cardDetails" class="hidden">
+                <label>Enter Card Number:</label>
+                <input type="text" name="paymentDetails" placeholder="**** **** **** ****" maxlength="16">
+                <label>Expiry Date:</label>
+                <input type="text" name="expiryDate" placeholder="MM/YY">
+                <label>CVV:</label>
+                <input type="text" name="cvv" placeholder="***" maxlength="3">
+            </div>
+
+            <div id="upiDetails" class="hidden">
+                <label>Enter UPI ID:</label>
+                <input type="text" name="paymentDetails" placeholder="example@upi">
+            </div>
 
             <label>Amount to Pay (RS):</label>
             <%
@@ -101,8 +175,11 @@ button:hover {
 
             <button type="submit">Proceed to Pay</button>
         </form>
-    </div>
 
-   
+        <div class="loading" id="loading">
+            <img src="${pageContext.request.contextPath}/images/Anima.gif" alt="Loading...">
+            <p>Processing your payment...</p>
+        </div>
+    </div>
 </body>
 </html>

@@ -162,10 +162,30 @@ td img {
     color: #721c24;
     border: 1px solid #f5c6cb;
 }
+.linkback {
+    color: #eb0c0f;
+    cursor: pointer;
+    
+}
+.back-link {
+    display: flex;
+    text-decoration: none;
+    font-size: 24px;
+    color: #00bcd4;
+    margin-bottom: 10px;
+    transition: 0.3s ease-in-out;
+}
 
+.back-link:hover {
+    color: #ff4081;
+    transform: scale(1.1);
+}
 </style>
 
 </head>
+
+ <a href="adminDashboard.jsp" class="back-link" onclick="goBack()">⋘ </a>
+
 <body>
 <% 
     String message = (String) session.getAttribute("message");
@@ -181,8 +201,7 @@ td img {
     %>
 <% } %>
 
-            <a href="adminDashboard.jsp" class="back-link" onclick="goBack()">⋘ </a>
-
+           
 <script>
     function goBack() {
         if (window.history.length > 1) {
@@ -202,7 +221,7 @@ td img {
 		<input type="text" name="licenseNumber" required> <label>Driver
 			Image:</label> <input type="file" name="imagePath" accept="image/*" required>
 		<button type="submit">Add Driver</button>
-		<a  href="adminDashboard.jsp">Back to Dashboard</a>
+	
 	</form>
 
 	<hr>

@@ -152,11 +152,24 @@ img:hover {
 		width: 100%;
 		margin-top: 10px;
 	}
+	
+}
+.back-link {
+    display: flex;
+    text-decoration: none;
+    font-size: 24px;
+    color: #00bcd4;
+    margin-bottom: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.back-link:hover {
+    color: #ff4081;
+    transform: scale(1.1);
 }
 </style>
 </head>
-<body>
-            <a href="adminDashboard.jsp" class="back-link" onclick="goBack()">⋘ </a>
+<a href="adminDashboard.jsp" class="back-link" onclick="goBack()">⋘ </a>
 
 <script>
     function goBack() {
@@ -167,7 +180,10 @@ img:hover {
         }
     }
 </script>
+<body>
+            
 	<h2>Manage Cars</h2>
+	
 	<form action="${pageContext.request.contextPath}/CarManagementServlet"
 		method="post" enctype="multipart/form-data">
 		<input type="hidden" name="action" value="add"> <input
@@ -229,6 +245,6 @@ class="edit-btn">✏ Edit</a>
 		}
 		%>
 	</table>
-	 <a href="adminDashboard.jsp">Back to Dashboard</a>
+	
 </body>
 </html>
